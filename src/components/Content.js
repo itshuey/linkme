@@ -1,19 +1,42 @@
 import React, { Component } from "react";
-import { Helmet } from "react-helmet"
+import { Helmet } from "react-helmet";
+import Typist from 'react-typist';
 import Fade from 'react-reveal/Fade';
-import favicon from "./favicon.ico"
-import './Content.css'
+import favicon from "./favicon.ico";
+import './Content.css';
+import gp from "../art/gp.jpg";
 
 export default class Content extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       archive: false,
       mainpage: true,
       color: false,
       image: "none",
       gifmode: false,
+      typistIndex: 0,
     };
+
+    this.art = [
+      "Audrey Vol 1.",
+      "Growing Pains"
+    ];
+
+    this.shuffleArt = this.shuffleArt.bind(this);
+  }
+
+  shuffleArt() {
+    let current = this.state.typistIndex;
+    if (this.art.includes(this.state.image)) {
+      this.setState({
+        typistIndex: current === 1 ? 0 : current + 1,
+        image:  "none"
+      });
+    } else {
+      this.setState({ typistIndex: current === 1 ? 0 : current + 1 });
+    }
   }
 
   renderContent() {
@@ -62,10 +85,15 @@ export default class Content extends Component {
         desc: "Some art I made",
         space: "..............................................",
         dest: <span
-          class="crosshair"
-          onMouseOver={() => this.setState({image : "ART"})}
+          onMouseOver={() => this.setState({image : this.art[this.state.typistIndex]})}
           onMouseLeave={() => this.setState({image : "none"})}>
-        Audrey Vol. 1
+          <Typist
+            key={this.state.typistIndex}
+            onTypingDone={() => this.shuffleArt()}
+          >
+            <span>{this.art[this.state.typistIndex]}</span>
+            <Typist.Backspace count={this.art[this.state.typistIndex].length} delay={2500} />
+          </Typist>
         </span>,
       }
     ]
@@ -140,7 +168,7 @@ export default class Content extends Component {
       class="footer signature glitch"
       data-text="by huey"
       onMouseOver={() => this.setState({gifmode : true})}
-      onMouseLeave={() => this.setState({gifmode : false})}> 
+      onMouseLeave={() => this.setState({gifmode : false})}>
       by huey
     </div>);
 
@@ -157,10 +185,17 @@ export default class Content extends Component {
       </img>
     )
 
-    let art = (
+    let audrey = (
       <img
         class="hovered" width="70%"
         src="https://i.imgur.com/uudajbN.jpg">
+      </img>
+    )
+
+    let growingpains = (
+      <img
+        class="hovered" width="500px"
+        src="https://i.imgur.com/hFhJv2A.png">
       </img>
     )
 
@@ -179,7 +214,8 @@ export default class Content extends Component {
         {footerRight}
         {this.state.image === "BOND" && bond}
         {this.state.image === "MUNA" && muna}
-        {this.state.image === "ART" && art}
+        {this.state.image === this.art[0] && audrey}
+        {this.state.image === this.art[1] && growingpains}
       </div>
     );
 

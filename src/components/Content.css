@@ -83,11 +83,8 @@ li {
   margin-left: 40px;
 }
 
-.color {
-
-}
-
 .signature {
+  cursor: default;
   right: 15px;
 }
 
@@ -106,42 +103,6 @@ li {
 .footer {
   position: absolute;
   bottom: 12px;
-}
-
-#jewel {
-  width: 50px;
-  -webkit-animation-name: spinner;
-  -webkit-animation-timing-function: linear;
-  -webkit-animation-iteration-count: infinite;
-  -webkit-animation-duration: 2s;
-  animation-name: spinner;
-  animation-timing-function: linear;
-  animation-iteration-count: infinite;
-  animation-duration: 2s;
-  -webkit-transform-style: preserve-3d;
-  -moz-transform-style: preserve-3d;
-  -ms-transform-style: preserve-3d;
-  transform-style: preserve-3d;
-}
-
-/* WebKit and Opera browsers */
-@-webkit-keyframes spinner {
-  from {
-    -webkit-transform: rotateY(0deg);
-  } to {
-    -webkit-transform: rotateY(-360deg);
-  }
-} /* all other browsers */
-@keyframes spinner {
-    from {
-      -moz-transform: rotateY(0deg);
-      -ms-transform: rotateY(0deg);
-      transform: rotateY(0deg);
-    } to {
-      -moz-transform: rotateY(-360deg);
-      -ms-transform: rotateY(-360deg);
-      transform: rotateY(-360deg);
-    }
 }
 
 .color {
@@ -376,38 +337,35 @@ li {
   }
 }
 @keyframes glitch-skew {
-  0% {
-    transform: skew(1deg);
-  }
-  10% {
-    transform: skew(2deg);
-  }
-  20% {
-    transform: skew(0deg);
-  }
-  30% {
-    transform: skew(-4deg);
-  }
-  40% {
-    transform: skew(4deg);
-  }
-  50% {
-    transform: skew(-4deg);
-  }
-  60% {
-    transform: skew(-1deg);
-  }
-  70% {
-    transform: skew(0deg);
-  }
-  80% {
-    transform: skew(2deg);
-  }
-  90% {
-    transform: skew(-3deg);
-  }
-  100% {
-    transform: skew(1deg);
-  }
+  0%    { transform: skew(1deg); }
+  10%   { transform: skew(2deg); }
+  20%   { transform: skew(0deg); }
+  30%   { transform: skew(-4deg); }
+  40%   { transform: skew(4deg); }
+  50%   { transform: skew(-4deg); }
+  60%   { transform: skew(-1deg); }
+  70%   { transform: skew(0deg); }
+  80%   { transform: skew(2deg); }
+  90%   { transform: skew(-3deg); }
+  100%  { transform: skew(1deg); }
 }
 
+.Typist {
+  display: inline;
+  cursor: default;
+}
+
+.Cursor {
+	display: inline-block;
+}
+
+.Cursor--blinking {
+	opacity: 1;
+	animation: blink 1s linear infinite;
+}
+
+@keyframes blink {
+	0%   { opacity: 1; }
+	50%  { opacity: 0; }
+	100% { opacity: 1; }
+}
