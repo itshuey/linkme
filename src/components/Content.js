@@ -12,6 +12,7 @@ export default class Content extends Component {
       mainpage: true,
       color: false,
       image: "none",
+      gifmode: false,
     };
   }
 
@@ -54,7 +55,7 @@ export default class Content extends Component {
         class="default"
         onMouseOver={() => this.setState({color : true})}
         onMouseLeave={() => this.setState({color : false})}>
-         FFA826
+         FF7F50
         </span>,
       },
       {
@@ -135,7 +136,13 @@ export default class Content extends Component {
       linkme
     </div>);
 
-    let footerRight = <div class="footer signature"> by huey </div>;
+    let footerRight = (<div
+      class="footer signature glitch"
+      data-text="by huey"
+      onMouseOver={() => this.setState({gifmode : true})}
+      onMouseLeave={() => this.setState({gifmode : false})}> 
+      by huey
+    </div>);
 
     let bond = (
       <img  class="hovered"
@@ -158,7 +165,10 @@ export default class Content extends Component {
     )
 
     const page = (
-      <div class={this.state.color ? "main color" : "main"}>
+      <div
+        class={this.state.color ? "main color" : "main"}
+        id={this.state.gifmode ? "animatedbg" : ""}
+      >
         <Helmet>
           <title>HUEY &mdash; linkme</title>
           <link rel="icon" href={favicon} type="image/x-icon" />
