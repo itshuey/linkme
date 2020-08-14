@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Helmet } from "react-helmet"
 import Fade from 'react-reveal/Fade';
 import './Content.css'
 
@@ -7,6 +8,8 @@ export default class Content extends Component {
     super(props);
     this.state = {
       archive: false,
+      mainpage: true,
+      color: false,
       selected: "main",
       image: "none",
     };
@@ -47,7 +50,11 @@ export default class Content extends Component {
       {
         desc: "My current favorite color",
         space: "........................................",
-        dest: <span class="color"> FF4500 </span>,
+        dest: <span
+        onMouseOver={() => this.setState({color : true})}
+        onMouseLeave={() => this.setState({color : false})}>
+         FFA826
+        </span>,
       },
       {
         desc: "Some art I made",
@@ -88,7 +95,7 @@ export default class Content extends Component {
 
     const header = (
       <div class="header">
-        <h1><Fade bottom cascade>{this.state.archive ? <i>archive</i> : "What I'm Up To:"}</Fade></h1>
+        <h1><i>{this.state.archive ? "archive" : "What I'm Up To:"}</i></h1>
       </div>
     );
 
@@ -102,13 +109,30 @@ export default class Content extends Component {
 
   render() {
 
+    let title = (
+      <div class="wrapper" onClick={() => this.setState({ mainpage: false })}>
+        <div class="mainpage">
+          <div class="logo">
+            <Fade distance={"40px"} bottom cascade>
+              linkme
+            </Fade>
+          </div>
+          <div class="tagline"><i> click anywhere to start </i></div>
+        </div>
+      </div>
+    )
+
     const page = (
-      <div class="main">
-        {this.renderContent()}
+      <div class={this.state.color ? "main color" : "main"}>
+        <Helmet>
+          <title>HUEY &mdash; linkme</title>
+        </Helmet>
+        {this.state.mainpage ? title : this.renderContent()}
+        {this.state.mainpage ? <div class="toggle"><i> love u </i></div> :
         <div class="toggle" onClick={()=> this.setState({archive: !this.state.archive})}>
           <i>{this.state.archive ? "home" : "archive"}</i>
-        </div>
-        <div class="footer concept"> linkme </div>
+        </div>}
+        <div class="footer concept" onClick={() => this.setState({ mainpage: true })}> linkme </div>
         <div class="footer signature"> by huey </div>
         {this.state.image === "BOND" &&
           <img class="hovered"

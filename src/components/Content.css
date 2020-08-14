@@ -1,11 +1,25 @@
 body {
   background-color: black;
   overflow: hidden;
+  margin: 0px;
 }
 
 a {
   text-decoration: none;
   color: white;
+}
+
+.logo {
+  font-size: 180px;
+}
+
+.tagline {
+  font-size: 16px;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100%;
 }
 
 .main {
@@ -16,7 +30,7 @@ a {
 }
 
 .content {
-  padding-top: 25vh;
+  padding-top: 30vh;
 }
 
 .header {
@@ -24,19 +38,27 @@ a {
 }
 
 .crosshair {
-  cursor: crosshair;
+  cursor: default;
 }
 
 .clear {
   opacity: 0%;
 }
 
-.hovered {
+.hovered, .mainpage {
   position: absolute;
-  top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  z-index: -1;
+}
+
+.mainpage {
+  cursor: default;
+  top: 45%;
+}
+
+.hovered {
+    top: 50%;
+    z-index: -1;
 }
 
 li {
@@ -74,6 +96,7 @@ li {
 
 .concept {
   left: 15px;
+  cursor: pointer;
 }
 
 .footer {
@@ -116,3 +139,12 @@ li {
       transform: rotateY(-360deg);
     }
 }
+
+.color {
+  animation: colorTransition;
+  animation-duration: 0.8s;
+  animation-fill-mode: forwards;
+  animation-timing-function: ease-out;
+}
+
+@keyframes colorTransition { from {background-color: inherit} to {background-color: #ffa826}; }
