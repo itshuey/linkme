@@ -47,7 +47,7 @@ export default class Content extends Component {
     if (this.state.mainpage) {
       this.setState({ trigger: this.state.trigger+1 });
     } else {
-      this.setState({ mainpage: true });
+      this.setState({ mainpage: true, image: "none" });
     }
   }
 
@@ -119,7 +119,7 @@ export default class Content extends Component {
         dest: "launch",
       },
       {
-        date: "08/13/2020",
+        date: "08/14/2020",
         dest: "current",
       }
     ]
