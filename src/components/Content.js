@@ -57,8 +57,8 @@ export default class Content extends Component {
       {
         desc: "Here's a song stuck in my head",
         mobile_desc: "Listening to",
-        space: " .........................",
-        mobile_space: "........................",
+        space: " ......................... ",
+        mobile_space: " ........................ ",
         dest:
           <a
           target="_blank"
@@ -72,8 +72,8 @@ export default class Content extends Component {
       },
       {
         desc: "Something I wrote",
-        space: "...............................................",
-        mobile_space: ".......................",
+        space: " ............................................... ",
+        mobile_space: " ....................... ",
         dest: <a
           target="_blank"
           rel="noreferrer"
@@ -86,8 +86,8 @@ export default class Content extends Component {
       },
       {
         desc: "My current favorite color",
-        space: "........................................",
-        mobile_space: "........................",
+        space: " ........................................ ",
+        mobile_space: " ........................ ",
         dest: <span
         class="default"
         onMouseOver={() => this.setState({color : true, image: "none"})}
@@ -97,8 +97,8 @@ export default class Content extends Component {
       },
       {
         desc: "Some art I made",
-        space: "..............................................",
-        mobile_space: ".........................",
+        space: " .............................................. ",
+        mobile_space: " ......................... ",
         dest: <span
           onMouseOver={() => this.setState({image : this.art[this.state.typistIndex]})}
           onMouseLeave={() => this.setState({image : "none"})}>
@@ -140,7 +140,7 @@ export default class Content extends Component {
       <div class="links">
         {this.state.archive ? archive : current}
       </div>
-    )
+    );
 
     const header = (
       <div class="header">
@@ -153,7 +153,7 @@ export default class Content extends Component {
         {header}
         {content}
       </div>
-    )
+    );
   }
 
   getContentClass() {
@@ -181,7 +181,7 @@ export default class Content extends Component {
           <div class="tagline"><i> click anywhere to start </i></div>
         </div>
       </div>
-    )
+    );
 
     let upperCorner = (this.state.mainpage ? <div class="toggle"><i> love u </i></div> :
       <div class="toggle" onClick={()=> this.setState({archive: !this.state.archive})}>
@@ -208,36 +208,34 @@ export default class Content extends Component {
         onClick={() => this.setState({archive: true})} width="80%"
         src="https://jamesbondradio.com/wp-content/uploads/2018/12/the-world-is-not-enough.png">
       </img>
-    )
+    );
 
     let muna = (
       <img class="hovered"
         src="https://static.gigwise.com/gallery/107182/muna-justinetrickett-3105.jpg">
       </img>
-    )
+    );
 
     let audrey = (
       <img
         class="hovered" width={isMobile ? "90%":"70%"}
         src="https://i.imgur.com/uudajbN.jpg">
       </img>
-    )
+    );
 
     let growingpains = (
       <img
         class="hovered" width={isMobile ? "500px" : "720px"}
         src="https://i.imgur.com/hFhJv2A.png">
       </img>
-    )
+    );
 
     let clutteredmind = (
       <img
         class="hovered" width={isMobile ? "92%":"77%"}
         src="https://i.imgur.com/UV8WMrD.png">
       </img>
-    )
-
-
+    );
 
     const page = (
       <div
