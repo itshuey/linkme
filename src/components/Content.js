@@ -22,7 +22,8 @@ export default class Content extends Component {
 
     this.art = [
       "Audrey Vol 1.",
-      "Growing Pains"
+      "Growing Pains",
+      "Cluttered Mind",
     ];
 
     this.shuffleArt = this.shuffleArt.bind(this);
@@ -34,11 +35,11 @@ export default class Content extends Component {
     let current = this.state.typistIndex;
     if (this.art.includes(this.state.image)) {
       this.setState({
-        typistIndex: current === 1 ? 0 : current + 1,
+        typistIndex: current === this.art.length-1 ? 0 : current + 1,
         image:  "none"
       });
     } else {
-      this.setState({ typistIndex: current === 1 ? 0 : current + 1 });
+      this.setState({ typistIndex: current === this.art.length-1 ? 0 : current + 1 });
     }
   }
 
@@ -224,10 +225,19 @@ export default class Content extends Component {
 
     let growingpains = (
       <img
-        class="hovered" width="500px"
+        class="hovered" width={isMobile ? "500px" : "720px"}
         src="https://i.imgur.com/hFhJv2A.png">
       </img>
     )
+
+    let clutteredmind = (
+      <img
+        class="hovered" width={isMobile ? "92%":"77%"}
+        src="https://i.imgur.com/UV8WMrD.png">
+      </img>
+    )
+
+
 
     const page = (
       <div
@@ -246,6 +256,7 @@ export default class Content extends Component {
         {!isMobile && this.state.image === "MUNA" && muna}
         {this.state.image === this.art[0] && audrey}
         {this.state.image === this.art[1] && growingpains}
+        {this.state.image === this.art[2] && clutteredmind}
       </div>
     );
 
