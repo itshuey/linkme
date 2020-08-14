@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet";
+import { isMobile } from "react-device-detect";
 import Typist from 'react-typist';
 import Fade from 'react-reveal/Fade';
 import favicon from "./favicon.ico";
 import './Content.css';
-import gp from "../art/gp.jpg";
 
 export default class Content extends Component {
   constructor(props) {
@@ -17,6 +17,7 @@ export default class Content extends Component {
       image: "none",
       gifmode: false,
       typistIndex: 0,
+      trigger: 0,
     };
 
     this.art = [
@@ -25,6 +26,8 @@ export default class Content extends Component {
     ];
 
     this.shuffleArt = this.shuffleArt.bind(this);
+    this.handleFooter = this.handleFooter.bind(this);
+    this.getContentClass = this.getContentClass.bind(this);
   }
 
   shuffleArt() {
@@ -39,13 +42,22 @@ export default class Content extends Component {
     }
   }
 
+  handleFooter() {
+    if (this.state.mainpage) {
+      this.setState({ trigger: this.state.trigger+1 });
+    } else {
+      this.setState({ mainpage: true });
+    }
+  }
+
   renderContent() {
 
     const current_info = [
       {
         desc: "Here's a song stuck in my head",
+        mobile_desc: "Listening to",
         space: " .........................",
-        mobile_space: ".........................",
+        mobile_space: "........................",
         dest:
           <a
           target="_blank"
@@ -60,7 +72,7 @@ export default class Content extends Component {
       {
         desc: "Something I wrote",
         space: "...............................................",
-        mobile_space: ".........................",
+        mobile_space: ".......................",
         dest: <a
           target="_blank"
           rel="noreferrer"
@@ -74,9 +86,10 @@ export default class Content extends Component {
       {
         desc: "My current favorite color",
         space: "........................................",
+        mobile_space: "........................",
         dest: <span
         class="default"
-        onMouseOver={() => this.setState({color : true})}
+        onMouseOver={() => this.setState({color : true, image: "none"})}
         onMouseLeave={() => this.setState({color : false})}>
          FF7F50
         </span>,
@@ -84,6 +97,7 @@ export default class Content extends Component {
       {
         desc: "Some art I made",
         space: "..............................................",
+        mobile_space: ".........................",
         dest: <span
           onMouseOver={() => this.setState({image : this.art[this.state.typistIndex]})}
           onMouseLeave={() => this.setState({image : "none"})}>
@@ -110,7 +124,11 @@ export default class Content extends Component {
     ]
 
     let current = current_info.map((item) =>
-      <div> {item.desc} {item.space} {item.dest} </div>
+      <div class={isMobile ? "mobileLinkItem" : "linkItem"}>
+        {isMobile && item.mobile_desc ? item.mobile_desc : item.desc}
+        {isMobile ? item.mobile_space : item.space}
+        {item.dest}
+      </div>
     );
 
     const archive = archive_info.map((item) =>
@@ -130,11 +148,23 @@ export default class Content extends Component {
     );
 
     return (
-      <div class={this.state.image === "none" ? "content" : "content clear"}>
+      <div class={this.getContentClass()}>
         {header}
         {content}
       </div>
     )
+  }
+
+  getContentClass() {
+    let contentClass = "content";
+    if (isMobile) {
+      contentClass += " mobile";
+      if (this.art.includes(this.state.image)) contentClass += " clear";
+    } else {
+      if (this.state.image !== "none") contentClass += " clear";
+    }
+
+    return contentClass;
   }
 
   render() {
@@ -143,7 +173,7 @@ export default class Content extends Component {
       <div class="wrapper" onClick={() => this.setState({ mainpage: false })}>
         <div class="mainpage">
           <div class="logo">
-            <Fade distance={"40px"} bottom cascade>
+            <Fade distance={"40px"} bottom cascade appear spy={this.state.trigger}>
               linkme
             </Fade>
           </div>
@@ -160,7 +190,7 @@ export default class Content extends Component {
 
     let footerLeft = (<div
       class="footer concept"
-      onClick={() => this.setState({ mainpage: true })}>
+      onClick={() => this.handleFooter()}>
       linkme
     </div>);
 
@@ -187,7 +217,7 @@ export default class Content extends Component {
 
     let audrey = (
       <img
-        class="hovered" width="70%"
+        class="hovered" width={isMobile ? "90%":"70%"}
         src="https://i.imgur.com/uudajbN.jpg">
       </img>
     )
@@ -212,8 +242,8 @@ export default class Content extends Component {
         {upperCorner}
         {footerLeft}
         {footerRight}
-        {this.state.image === "BOND" && bond}
-        {this.state.image === "MUNA" && muna}
+        {!isMobile && this.state.image === "BOND" && bond}
+        {!isMobile && this.state.image === "MUNA" && muna}
         {this.state.image === this.art[0] && audrey}
         {this.state.image === this.art[1] && growingpains}
       </div>

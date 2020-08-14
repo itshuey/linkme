@@ -13,8 +13,45 @@ a {
   cursor: default;
 }
 
+.linkItem {
+  padding-bottom: 2px;
+}
+
+.mobileLinkItem {
+  padding-bottom: 1px;
+  padding-top: 1px;
+}
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .logo {
+    font-size: 100px;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  .logo {
+    font-size: 140px;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+  .logo {
+    font-size: 160px;
+  }
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+  .logo {
+    font-size: 180px;
+  }
+}
+
 .logo {
-  font-size: 180px;
+  width: 500px;
 }
 
 .tagline {
@@ -37,12 +74,8 @@ a {
   padding-top: 30vh;
 }
 
-.header {
-
-}
-
-.crosshair {
-  cursor: default;
+.content.mobile {
+  padding-top: 20vh;
 }
 
 .clear {
@@ -64,11 +97,6 @@ a {
     top: 50%;
     z-index: -1;
 }
-
-li {
-  list-style-type: none;
-}
-
 
 .links {
   margin-top: 2vh;
@@ -116,6 +144,12 @@ li {
 
 #animatedbg {
   background: url(https://media1.giphy.com/media/3oEduMhFrYvKk4giac/giphy.gif);
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#animatedbg2 {
+  background: url(https://cutewallpaper.org/21/black-background-1920x1080/Hd-Fire-Spark-1920x1080-Wallpaper-Bengal-Fire-Sparks-Dark-.jpg);
   background-repeat: no-repeat;
   background-size: cover;
 }
