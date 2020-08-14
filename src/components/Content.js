@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Helmet } from "react-helmet"
 import Fade from 'react-reveal/Fade';
+import favicon from "./favicon.ico"
 import './Content.css'
 
 export default class Content extends Component {
@@ -10,7 +11,6 @@ export default class Content extends Component {
       archive: false,
       mainpage: true,
       color: false,
-      selected: "main",
       image: "none",
     };
   }
@@ -51,6 +51,7 @@ export default class Content extends Component {
         desc: "My current favorite color",
         space: "........................................",
         dest: <span
+        class="default"
         onMouseOver={() => this.setState({color : true})}
         onMouseLeave={() => this.setState({color : false})}>
          FFA826
@@ -122,36 +123,53 @@ export default class Content extends Component {
       </div>
     )
 
+    let upperCorner = (this.state.mainpage ? <div class="toggle"><i> love u </i></div> :
+      <div class="toggle" onClick={()=> this.setState({archive: !this.state.archive})}>
+        <i>{this.state.archive ? "home" : "archive"}</i>
+      </div>
+    );
+
+    let footerLeft = (<div
+      class="footer concept"
+      onClick={() => this.setState({ mainpage: true })}>
+      linkme
+    </div>);
+
+    let footerRight = <div class="footer signature"> by huey </div>;
+
+    let bond = (
+      <img  class="hovered"
+        onClick={() => this.setState({archive: true})} width="80%"
+        src="https://jamesbondradio.com/wp-content/uploads/2018/12/the-world-is-not-enough.png">
+      </img>
+    )
+
+    let muna = (
+      <img class="hovered"
+        src="https://static.gigwise.com/gallery/107182/muna-justinetrickett-3105.jpg">
+      </img>
+    )
+
+    let art = (
+      <img
+        class="hovered" width="70%"
+        src="https://i.imgur.com/uudajbN.jpg">
+      </img>
+    )
+
     const page = (
       <div class={this.state.color ? "main color" : "main"}>
         <Helmet>
           <title>HUEY &mdash; linkme</title>
+          <link rel="icon" href={favicon} type="image/x-icon" />
         </Helmet>
         {this.state.mainpage ? title : this.renderContent()}
-        {this.state.mainpage ? <div class="toggle"><i> love u </i></div> :
-        <div class="toggle" onClick={()=> this.setState({archive: !this.state.archive})}>
-          <i>{this.state.archive ? "home" : "archive"}</i>
-        </div>}
-        <div class="footer concept" onClick={() => this.setState({ mainpage: true })}> linkme </div>
-        <div class="footer signature"> by huey </div>
-        {this.state.image === "BOND" &&
-          <img class="hovered"
-          onClick={() => this.setState({archive: true})}
-          width="80%"
-          src="https://jamesbondradio.com/wp-content/uploads/2018/12/the-world-is-not-enough.png">
-          </img>
-        }
-        {this.state.image === "MUNA" &&
-            <img class="hovered"
-            src="https://static.gigwise.com/gallery/107182/muna-justinetrickett-3105.jpg">
-            </img>
-        }
-        {this.state.image === "ART" &&
-            <img class="hovered"
-            width="70%"
-            src="https://i.imgur.com/uudajbN.jpg">
-            </img>
-        }
+        {upperCorner}
+        {footerLeft}
+        {footerRight}
+        {this.state.image === "BOND" && bond}
+        {this.state.image === "MUNA" && muna}
+        {this.state.image === "ART" && art}
       </div>
     );
 
