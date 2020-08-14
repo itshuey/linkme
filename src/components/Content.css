@@ -1,18 +1,53 @@
 body {
-  text-align: center;
   background-color: black;
+  overflow: hidden;
+}
+
+a {
+  text-decoration: none;
   color: white;
 }
 
-.header {
-  margin-top: 25vh;
+.main {
+  text-align: center;
+  color: white;
+  height: 100vh;
+  width: 100vw;
 }
+
+.content {
+  padding-top: 25vh;
+}
+
+.header {
+
+}
+
+.crosshair {
+  cursor: crosshair;
+}
+
+.clear {
+  opacity: 0%;
+}
+
+.hovered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+}
+
+li {
+  list-style-type: none;
+}
+
 
 .links {
   margin-top: 2vh;
   text-align: left;
-  display: inline-block
-
+  display: inline-block;
 }
 
 .title {
@@ -27,21 +62,23 @@ body {
 }
 
 .signature {
-  position: absolute;
-  bottom: 12px;
   right: 15px;
 }
 
-.archive {
+.toggle {
   position: absolute;
   top: 10px;
   right: 15px;
+  cursor: pointer;
 }
 
 .concept {
+  left: 15px;
+}
+
+.footer {
   position: absolute;
   bottom: 12px;
-  left: 15px;
 }
 
 #jewel {
