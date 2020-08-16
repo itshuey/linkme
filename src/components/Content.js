@@ -78,7 +78,7 @@ export default class Content extends Component {
           target="_blank"
           rel="noreferrer"
           href="https://www.notion.so/The-World-Is-Not-Enough-1999-2fb147cc9b0b4bf4b0a7669bf9f399d4"
-          onMouseOver={() => this.setState({image : "BOND"})}
+          onMouseOver={() => this.setState({image : "MOVIE"})}
           onMouseLeave={() => this.setState({image : "none"})}
           >
           Movie Review
@@ -179,7 +179,7 @@ export default class Content extends Component {
             </Fade>
           </div>
           <div class="tagline"><i>
-            {isMobile ? "tap to start exploring" : "click anywhere to start"} 
+            {isMobile ? "tap to start exploring" : "click anywhere to start"}
           </i></div>
         </div>
       </div>
@@ -209,6 +209,13 @@ export default class Content extends Component {
       <img  class="hovered"
         onClick={() => this.setState({archive: true})} width="80%"
         src="https://jamesbondradio.com/wp-content/uploads/2018/12/the-world-is-not-enough.png">
+      </img>
+    );
+
+    let hathaway = (
+      <img  class="hovered"
+        onClick={() => this.setState({archive: true})} width="70%"
+        src="https://i.imgur.com/KwDdt5c.jpg">
       </img>
     );
 
@@ -252,7 +259,7 @@ export default class Content extends Component {
         {upperCorner}
         {footerLeft}
         {footerRight}
-        {!isMobile && this.state.image === "BOND" && bond}
+        {!isMobile && this.state.image === "MOVIE" && hathaway}
         {!isMobile && this.state.image === "MUNA" && muna}
         {this.state.image === this.art[0] && audrey}
         {this.state.image === this.art[1] && growingpains}
