@@ -178,7 +178,9 @@ export default class Content extends Component {
               linkme
             </Fade>
           </div>
-          <div class="tagline"><i> click anywhere to start </i></div>
+          <div class="tagline"><i>
+            {isMobile ? "tap to start exploring" : "click anywhere to start"} 
+          </i></div>
         </div>
       </div>
     );
