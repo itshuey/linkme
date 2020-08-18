@@ -73,6 +73,10 @@ body {
   top: 45%;
 }
 
+.red {
+  color: #ff4a4a;
+}
+
 .color {
   animation: colorTransition;
   animation-duration: 0.8s;
@@ -92,6 +96,14 @@ body {
   background: url(https://cutewallpaper.org/21/black-background-1920x1080/Hd-Fire-Spark-1920x1080-Wallpaper-Bengal-Fire-Sparks-Dark-.jpg);
   background-repeat: no-repeat;
   background-size: cover;
+}
+
+#sakura {
+  position: fixed;
+  right: 0;
+  bottom: 0;
+  min-width: 100%;
+  min-height: 100%;
 }
 
 /**%%%%%%%%% CONTENT CSS %%%%%%%%%**/

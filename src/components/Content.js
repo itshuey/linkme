@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet";
 import { isMobile } from "react-device-detect";
 import Typist from 'react-typist';
 import Fade from 'react-reveal/Fade';
+import sakura from "./Sakura.mp4";
 import favicon from "./favicon.ico";
 import './Content.css';
 
@@ -18,6 +19,7 @@ export default class Content extends Component {
       gifmode: false,
       typistIndex: 0,
       trigger: 0,
+      sakura: false,
     };
 
     this.art = [
@@ -47,7 +49,7 @@ export default class Content extends Component {
     if (this.state.mainpage) {
       this.setState({ trigger: this.state.trigger+1 });
     } else {
-      this.setState({ mainpage: true, image: "none" });
+      this.setState({ mainpage: true, image: "none", archive: false });
     }
   }
 
@@ -77,7 +79,7 @@ export default class Content extends Component {
         dest: <a
           target="_blank"
           rel="noreferrer"
-          href="https://www.notion.so/The-World-Is-Not-Enough-1999-2fb147cc9b0b4bf4b0a7669bf9f399d4"
+          href="https://www.notion.so/Serenity-2019-293d66b646dd44bab1f9e479bc822888"
           onMouseOver={() => this.setState({image : "MOVIE"})}
           onMouseLeave={() => this.setState({image : "none"})}
           >
@@ -170,8 +172,15 @@ export default class Content extends Component {
 
   render() {
 
+    let video = (
+      <video autoPlay muted loop id="sakura">
+        <source src={sakura} type="video/mp4" />
+      </video>
+    )
+
     let title = (
-      <div class="wrapper" onClick={() => this.setState({ mainpage: false })}>
+      <div class="wrapper" onClick={() => this.setState({ mainpage: false, sakura: false })}>
+        {!isMobile && this.state.sakura && video}
         <div class="mainpage">
           <div class="logo">
             <Fade distance={"40px"} bottom cascade appear spy={this.state.trigger}>
@@ -185,7 +194,10 @@ export default class Content extends Component {
       </div>
     );
 
-    let upperCorner = (this.state.mainpage ? <div class="toggle"><i> love u </i></div> :
+    let upperCorner = (this.state.mainpage ?
+      <div class="toggle" onClick={()=> this.setState({sakura: !this.state.sakura})}>
+        <i> love u </i>
+      </div> :
       <div class="toggle" onClick={()=> this.setState({archive: !this.state.archive})}>
         <i>{this.state.archive ? "home" : "archive"}</i>
       </div>
@@ -200,7 +212,7 @@ export default class Content extends Component {
     let footerRight = (<div
       class="footer signature glitch"
       data-text="by huey"
-      onMouseOver={() => this.setState({gifmode : true})}
+      onMouseOver={() => this.setState({gifmode : true, sakura: false})}
       onMouseLeave={() => this.setState({gifmode : false})}>
       by huey
     </div>);
