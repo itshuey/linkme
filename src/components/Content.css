@@ -77,6 +77,10 @@ body {
   color: #ff4a4a;
 }
 
+.gold {
+  color: darkgoldenrod;
+}
+
 .color {
   animation: colorTransition;
   animation-duration: 0.8s;
@@ -121,8 +125,20 @@ body {
   margin-left: 40px;
 }
 
-.linkItem {
+.linkItem, .archiveItem {
   padding-bottom: 2px;
+}
+
+.archiveItem {
+  transform: translate(30px, 0px);
+}
+
+.tag {
+  visibility: hidden;
+}
+
+.archiveLink:hover + .tag {
+  visibility: visible;
 }
 
 .mobileLinkItem {
@@ -132,6 +148,10 @@ body {
 
 .tagline {
   font-size: 16px;
+}
+
+.archiveLink:hover + span#bond-archive.mobile-tag {
+  visibility: hidden;
 }
 
 a {

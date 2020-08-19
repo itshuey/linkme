@@ -61,8 +61,7 @@ export default class Content extends Component {
         mobile_desc: "Listening to",
         space: " ......................... ",
         mobile_space: " ........................ ",
-        dest:
-          <a
+        dest: <a
           target="_blank"
           rel="noreferrer"
           href="https://www.youtube.com/watch?v=Z417ESyz3oQ"
@@ -83,7 +82,7 @@ export default class Content extends Component {
           onMouseOver={() => this.setState({image : "MOVIE"})}
           onMouseLeave={() => this.setState({image : "none"})}
           >
-          Movie Review
+          Serenity (Review)
           </a>,
       },
       {
@@ -117,13 +116,36 @@ export default class Content extends Component {
 
     const archive_info = [
       {
-        date: "08/12/2020",
-        dest: "launch",
+        content: "G-DRAGON",
+        type: "art",
+        link: "https://i.imgur.com/PPLTTQY.jpg",
       },
       {
-        date: "08/14/2020",
-        dest: "current",
-      }
+        content: "A THEORY ON FORM: ZAYN",
+        type: "art",
+        link: "https://i.imgur.com/hCqyPr1r.jpg",
+      },
+      {
+        content: "THE WORLD IS NOT ENOUGH (1999)",
+        id: "bond-archive",
+        type: "review",
+        link: "https://www.notion.so/The-World-Is-Not-Enough-1999-2fb147cc9b0b4bf4b0a7669bf9f399d4",
+      },
+      {
+        content: "HER, AND I (EDIT)",
+        type: "video",
+        link: "https://vimeo.com/284876435",
+      },
+      {
+        content: "MATH: MULTI ARM BANDITS",
+        type: "paper",
+        link: "https://github.com/itshuey/multi-armed-bandits/blob/master/multiArmedBandit.pdf",
+      },
+      {
+        content: "THE BIRD APP",
+        type: "my twitter",
+        link: "https://twitter.com/piratehuey",
+      },
     ]
 
     let current = current_info.map((item) =>
@@ -134,8 +156,24 @@ export default class Content extends Component {
       </div>
     );
 
-    const archive = archive_info.map((item) =>
+    const alt_archive = archive_info.map((item) =>
       <div> {item.date} {"::::::::::"} {item.dest} </div>
+    );
+
+    const archive = archive_info.map((item) =>
+      <div class={"archiveItem"}>
+        <a class={"archiveLink"}
+           target="_blank"
+           rel="noreferrer"
+           href={item.link} >
+        {item.content}
+        </a>
+        <span
+          class={isMobile ? "tag gold mobile-tag" : "tag gold"}
+          id={item.id}>
+          &nbsp;&mdash; <i>{item.type}</i>
+        </span>
+      </div>
     );
 
     const content = (
