@@ -3,7 +3,7 @@ import { Helmet } from "react-helmet";
 import { isMobile } from "react-device-detect";
 import Typist from 'react-typist';
 import Fade from 'react-reveal/Fade';
-import sakura from "./Sakura.mp4";
+import sakura from "../../static/Sakura.mp4";
 import favicon from "./favicon.ico";
 import './Content.css';
 
