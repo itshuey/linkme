@@ -60,7 +60,7 @@ export default class Content extends Component {
         desc: "Here's a song stuck in my head",
         mobile_desc: "Listening to",
         space: " ......................... ",
-        mobile_space: " ........................ ",
+        mobile_space: " ..................... ",
         dest: <a
           target="_blank"
           rel="noreferrer"
@@ -74,7 +74,7 @@ export default class Content extends Component {
       {
         desc: "Something I wrote",
         space: " ............................................... ",
-        mobile_space: " ....................... ",
+        mobile_space: " ................. ",
         dest: <a
           target="_blank"
           rel="noreferrer"
@@ -88,7 +88,7 @@ export default class Content extends Component {
       {
         desc: "My current favorite color",
         space: " ........................................ ",
-        mobile_space: " ........................ ",
+        mobile_space: " ..................... ",
         dest: <span
         class="default"
         onMouseOver={() => this.setState({color : true, image: "none"})}
@@ -99,7 +99,7 @@ export default class Content extends Component {
       {
         desc: "Some art I made",
         space: " .............................................. ",
-        mobile_space: " ......................... ",
+        mobile_space: " ...................... ",
         dest: <span
           onMouseOver={() => this.setState({image : this.art[this.state.typistIndex]})}
           onMouseLeave={() => this.setState({image : "none"})}>
