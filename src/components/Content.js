@@ -4,6 +4,7 @@ import { isMobile } from "react-device-detect";
 import Typist from 'react-typist';
 import Fade from 'react-reveal/Fade';
 import sakura from "../../static/Sakura.mp4";
+import sixteenhours from "../../static/16hours.mp4";
 import favicon from "./favicon.ico";
 import './Content.css';
 
@@ -20,6 +21,7 @@ export default class Content extends Component {
       typistIndex: 0,
       trigger: 0,
       sakura: false,
+      easteregg: false,
     };
 
     this.art = [
@@ -210,6 +212,12 @@ export default class Content extends Component {
 
   render() {
 
+    let easteregg = (
+      <video autoPlay muted loop id="sixteenhours">
+        <source src={sixteenhours} type="video/mp4" />
+      </video>
+    )
+
     let video = (
       <video autoPlay muted loop id="sakura">
         <source src={sakura} type="video/mp4" />
@@ -218,7 +226,9 @@ export default class Content extends Component {
 
     let title = (
       <div class="wrapper" onClick={() => this.setState({ mainpage: false, sakura: false })}>
+        {!isMobile && this.state.easteregg && easteregg}
         {!isMobile && this.state.sakura && video}
+        {!this.state.easteregg &&
         <div class="mainpage">
           <div class="logo">
             <Fade distance={"40px"} bottom cascade appear spy={this.state.trigger}>
@@ -228,11 +238,19 @@ export default class Content extends Component {
           <div class="tagline"><i>
             {isMobile ? "tap to start exploring" : "click anywhere to start"}
           </i></div>
-        </div>
+        </div>}
       </div>
     );
 
-    let upperCorner = (this.state.mainpage ?
+    let upperLeftCorner = (<div
+      id="easteregg"
+      onMouseOver={() => this.setState({easteregg: true, sakura: false, image: "none"})}
+      onMouseLeave={() => this.setState({easteregg : false})}>
+      <b>EASTER EGG <br />
+      16 HOURS</b>
+    </div>);
+
+    let upperRightCorner = (this.state.mainpage ?
       <div class="toggle" onClick={()=> this.setState({sakura: !this.state.sakura})}>
         <i> love u </i>
       </div> :
@@ -250,8 +268,8 @@ export default class Content extends Component {
     let footerRight = (<div
       class="footer signature glitch"
       data-text="by huey"
-      onMouseOver={() => this.setState({gifmode : true, sakura: false, image: "none"})}
-      onMouseLeave={() => this.setState({gifmode : false})}>
+      onMouseOver={() => this.setState({gifmode: true, sakura: false, image: "none"})}
+      onMouseLeave={() => this.setState({gifmode: false})}>
       by huey
     </div>);
 
@@ -306,7 +324,8 @@ export default class Content extends Component {
           <link rel="icon" href={favicon} type="image/x-icon" />
         </Helmet>
         {this.state.mainpage ? title : this.renderContent()}
-        {upperCorner}
+        {!isMobile && this.state.mainpage && upperLeftCorner}
+        {upperRightCorner}
         {footerLeft}
         {footerRight}
         {!isMobile && this.state.image === "MOVIE" && hathaway}

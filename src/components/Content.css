@@ -77,6 +77,10 @@ body {
   color: #ff4a4a;
 }
 
+.coral {
+  color: coral;
+}
+
 .gold {
   color: darkgoldenrod;
 }
@@ -88,7 +92,13 @@ body {
   animation-timing-function: ease-out;
 }
 
-@keyframes colorTransition { from {background-color: inherit} to {background-color: coral}; }
+@keyframes colorTransition {
+  from {
+    background-color: inherit
+  } to {
+    background-color: coral
+  };
+}
 
 #animatedbg {
   background: url(https://media1.giphy.com/media/3oEduMhFrYvKk4giac/giphy.gif);
@@ -102,7 +112,7 @@ body {
   background-size: cover;
 }
 
-#sakura {
+#sakura, #sixteenhours {
   position: fixed;
   right: 0;
   bottom: 0;
@@ -190,6 +200,15 @@ a {
 .footer {
   position: absolute;
   bottom: 12px;
+}
+
+#easteregg {
+  text-align: left;
+  color: black;
+  position: absolute;
+  top: 10px;
+  left: 15px;
+  cursor: default;
 }
 
 /**%%%%%%%%% GLITCH CSS %%%%%%%%%**/
