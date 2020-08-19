@@ -250,7 +250,7 @@ export default class Content extends Component {
     let footerRight = (<div
       class="footer signature glitch"
       data-text="by huey"
-      onMouseOver={() => this.setState({gifmode : true, sakura: false})}
+      onMouseOver={() => this.setState({gifmode : true, sakura: false, image: "none"})}
       onMouseLeave={() => this.setState({gifmode : false})}>
       by huey
     </div>);
